@@ -1,0 +1,51 @@
+// src/products.js
+export const products = [
+  {
+    id: 1,
+    name: "Stylish T-Shirt",
+    price: 29.99,
+    category: "men",
+    image: "https://via.placeholder.com/200x200.png?text=T-Shirt",
+    description: "A comfortable and stylish t-shirt.",
+  },
+  {
+    id: 2,
+    name: "Comfortable Jeans",
+    price: 59.99,
+    category: "women",
+    image: "https://via.placeholder.com/200x200.png?text=Jeans",
+    description: "High-quality jeans.",
+  },
+  {
+    id: 3,
+    name: "Cozy Sweater",
+    price: 49.99,
+    category: "men",
+    image: "https://via.placeholder.com/200x200.png?text=Sweater",
+    description: "Stay warm and fashionable.",
+  },
+  {
+    id: 4,
+    name: "Elegant Dress",
+    price: 79.99,
+    category: "women",
+    image: "https://via.placeholder.com/200x200.png?text=Dress",
+    description: "An elegant dress for special occasions.",
+  },
+  {
+    id: 5,
+    name: "Kids' Playsuit",
+    price: 34.99,
+    category: "kids",
+    image: "https://via.placeholder.com/200x200.png?text=Playsuit",
+    description: "A fun playsuit for kids.",
+  },
+  {
+    id: 6,
+    name: "Summer Shorts",
+    price: 24.99,
+    category: "men",
+    image: "https://via.placeholder.com/200x200.png?text=Shorts",
+    description: "Cool and comfortable shorts.",
+  },
+];
