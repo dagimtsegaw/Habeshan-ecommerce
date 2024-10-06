@@ -3,9 +3,11 @@ import Header from "./Components/Header/Header";
 import NavBar from "./Components/NavBar";
 import Home from "./Pages/Home";
 import Products from "./Pages/Products";
+import ProductGrid from "./Components/ProductGrid";
 import Cart from "./Components/Cart";
 
 import "./assets/styles.css";
+import ProductCards from "./Components/Products/ProductCards";
 
 function App() {
   const [cart, setCart] = useState([]);
@@ -17,13 +19,14 @@ function App() {
 
   return (
     <div>
-      <Header cartCount={cart.length} />
+      <Header cartCount={5} />
       <NavBar />
       <main>
         <Home />
-        <Products addToCart={addToCart} />
+        <ProductGrid />
       </main>
       <Cart cart={cart} />
+      <ProductCards />
     </div>
   );
 }

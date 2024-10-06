@@ -1,57 +1,176 @@
-.header_container {
-  display: flex;
-  justify-content: space-between;
+/* General Styles */
+body {
+  font-family: "Roboto", sans-serif;
+  margin: 0;
+  padding: 0;
 }
 
-.signin_btn {
-  background-color: white;
-  color: black;
-  padding: 12px 24px;
-  border: 2px solid #f0c14b; /* Amazon yellow color */
-  border-radius: 5px;
-  font-size: 16px;
-  font-weight: bold;
-  cursor: pointer;
-  transition: background-color 0.3s ease, color 0.3s ease, transform 0.3s ease;
-  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
-}
-
-.signin_btn:hover {
-  background-color: #f0c14b;
+.header {
+  background-color: black; /* Sleek dark color */
   color: white;
-  transform: scale(1.05); /* Slight zoom effect */
-  box-shadow: 0px 6px 10px rgba(0, 0, 0, 0.15); /* Slightly stronger shadow */
-}
-
-.signin_btn:active {
-  transform: scale(0.98); /* Button 'press' effect */
-}
-.search_container {
-  position: relative;
-  width: 300px;
-}
-
-.search_input {
+  padding: 1rem 2rem;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  display: flex;
+  justify-content: space-between; /* Space between items */
+  align-items: center;
   width: 100%;
-  padding: 10px 40px 10px 15px;
-  border: 2px solid #f0c14b; /* Amazon yellow color */
-  border-radius: 30px;
-  font-size: 16px;
-  box-sizing: border-box;
+  max-width: 1200px; /* Ensures header does not exceed container width */
+  margin: 0 auto; /* Centers the header */
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.15);
+  gap: 30px;
+}
+
+.logoContainer {
+  margin: 0; /* No margin to keep it at the left */
+}
+
+.logo {
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: #f1f1f1; /* Neutral, professional color */
+  margin: 0;
+}
+
+.searchContainer {
+  flex: 1; /* Take up remaining space */
+  display: flex;
+  justify-content: center; /* Center the search bar */
+  position: relative;
+}
+
+.searchInput {
+  width: 100%;
+  padding: 0.5rem 1rem;
+  border: 1px solid #ddd;
+  border-radius: 40px;
+  font-size: 1rem;
+  background-color: #f4f4f4;
   outline: none;
-  transition: border 0.3s ease;
-  padding: 10px;
 }
 
-.search_input:focus {
-  border-color: #ff9900; /* Slightly darker yellow on focus */
-}
-
-.search_icon {
+.searchButton {
   position: absolute;
-  right: 15px;
+  right: 0.2px;
   top: 50%;
   transform: translateY(-50%);
-  color: #333;
-  pointer-events: none; /* Prevent the icon from blocking clicks */
+  background-color: black; /* A professional blue accent */
+  border: none;
+  padding: 0.4rem;
+  border-radius: 50%;
+  color: white;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.searchButton:hover {
+  background-color: #5c5c5c; /* Darker blue on hover */
+}
+
+.nav {
+  display: flex;
+  justify-content: flex-end; /* Aligns items to the right */
+  align-items: center;
+  gap: 1rem; /* Adds gap between nav items */
+  background-color: white; /* Sets background color to white */
+  padding: 0.5rem; /* Padding around nav items */
+  border-radius: 8px; /* Optional: rounded corners */
+}
+
+.signInButton {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: none;
+  border: none;
+  color: black;
+  font-size: 0.9rem;
+  cursor: pointer;
+  padding: 0.5rem; /* Add padding for better appearance */
+  transition: color 0.3s ease;
+}
+
+.signInButton:hover {
+  color: #6a6a6a;
+}
+
+.cartContainer {
+  position: relative;
+  cursor: pointer;
+  display: flex; /* Flex display to adjust width */
+  align-items: center; /* Center cart icon and count */
+}
+
+.cartCount {
+  position: absolute;
+  top: -8px;
+  right: -8px;
+  background-color: black; /* Same blue accent for consistency */
+  color: white;
+  font-size: 0.75rem;
+  font-weight: bold;
+  padding: 2px 6px;
+  border-radius: 50%;
+}
+
+/* Mobile Menu */
+.menuButton {
+  display: none;
+  background: none;
+  border: none;
+  color: black;
+  cursor: pointer;
+}
+
+@media (max-width: 768px) {
+  .header {
+    padding: 0.75rem 1rem;
+    flex-wrap: wrap; /* Allow wrapping for mobile */
+  }
+
+  .logoContainer {
+    flex-basis: 100%;
+    display: flex;
+    justify-content: center;
+    margin-bottom: 10px;
+  }
+
+  .searchContainer {
+    order: 3;
+    margin: 1rem 0 0;
+    max-width: 100%;
+    flex-basis: 100%;
+  }
+
+  .nav {
+    display: none;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1rem;
+    width: 100%;
+    margin-top: 1rem;
+  }
+
+  .nav.open {
+    display: flex;
+    animation: slideIn 0.3s ease forwards;
+  }
+
+  .menuButton {
+    display: block;
+    flex-basis: 100%;
+    justify-content: center;
+  }
+
+  @keyframes slideIn {
+    from {
+      opacity: 0;
+      transform: translateY(-100%);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
 }

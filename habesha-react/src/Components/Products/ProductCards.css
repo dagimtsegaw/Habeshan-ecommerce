@@ -1,0 +1,49 @@
+.header {
+  background: #000;
+  color: #fff;
+  padding: 10px;
+}
+
+.title {
+  text-align: center;
+  font-weight: bold;
+}
+
+.center {
+  text-align: center;
+  font-weight: bold;
+}
+
+.content-table {
+  width: 76%;
+  margin: 20px auto;
+  border-collapse: collapse;
+}
+
+.content-table td {
+  padding: 10px;
+  border: 1px solid #99c;
+  background-color: #ccd;
+}
+
+.content-table a {
+  font-weight: bold;
+  color: #448;
+  text-decoration: none;
+}
+
+.content-table a:hover {
+  color: #000;
+  background-color: #fff;
+}
+
+footer {
+  text-align: center;
+  margin-top: 20px;
+  background-color: #ccd;
+  padding: 10px;
+}
+
+footer small {
+  font-size: 12px;
+}

@@ -1,84 +1,56 @@
-import React, { useState, useEffect } from "react";
-import ProductCard from "../Components/ProductCard"; // Adjust the path if necessary
+import React from "react";
+import ProductCard from "./ProductCard";
 
-const placeholderProducts = [
+const products = [
   {
     id: 1,
-    name: "Loading...",
-    price: "...",
-    category: "all",
-    image: "https://via.placeholder.com/200x200.png?text=Loading...",
-    description: "...",
+    name: "Ethiopian Traditional Dress",
+    price: 199.99,
+    description:
+      "Beautiful Ethiopian traditional dress with intricate designs.",
   },
   {
     id: 2,
-    name: "Loading...",
-    price: "...",
-    category: "all",
-    image: "https://via.placeholder.com/200x200.png?text=Loading...",
-    description: "...",
+    name: "Ethiopian Traditional Dress",
+    price: 199.99,
+    description:
+      "Beautiful Ethiopian traditional dress with intricate designs.",
+  },
+  {
+    id: 3,
+    name: "Ethiopian Traditional Dress",
+    price: 199.99,
+    description:
+      "Beautiful Ethiopian traditional dress with intricate designs.",
+  },
+  {
+    id: 4,
+    name: "Ethiopian Traditional Dress",
+    price: 199.99,
+    description:
+      "Beautiful Ethiopian traditional dress with intricate designs.",
+  },
+  {
+    id: 5,
+    name: "Ethiopian Traditional Dress",
+    price: 199.99,
+    description:
+      "Beautiful Ethiopian traditional dress with intricate designs.",
+  },
+  {
+    id: 6,
+    name: "Ethiopian Traditional Dress",
+    price: 199.99,
+    description:
+      "Beautiful Ethiopian traditional dress with intricate designs.",
   },
 ];
 
-function ProductGrid({ category }) {
-  const [products, setProducts] = useState(placeholderProducts);
-  const [loading, setLoading] = useState(true);
-
-  useEffect(() => {
-    // Simulate a product data fetch with random images
-    setTimeout(() => {
-      setProducts([
-        {
-          id: 1,
-          name: "Stylish T-Shirt",
-          price: 29.99,
-          category: "men",
-          image: "https://source.unsplash.com/random/200x200?shirt",
-          description: "A comfortable and stylish t-shirt for everyday wear.",
-        },
-        {
-          id: 2,
-          name: "Comfortable Jeans",
-          price: 59.99,
-          category: "women",
-          image: "https://source.unsplash.com/random/200x200?jeans",
-          description:
-            "High-quality jeans that look great and feel even better.",
-        },
-        {
-          id: 3,
-          name: "Cozy Sweater",
-          price: 49.99,
-          category: "men",
-          image: "https://source.unsplash.com/random/200x200?sweater",
-          description: "Stay warm and fashionable with this cozy sweater.",
-        },
-        {
-          id: 4,
-          name: "Elegant Dress",
-          price: 79.99,
-          category: "women",
-          image: "https://source.unsplash.com/random/200x200?dress",
-          description: "An elegant dress perfect for special occasions.",
-        },
-      ]);
-      setLoading(false);
-    }, 2000);
-  }, [category]);
-
-  const filteredProducts =
-    category === "all"
-      ? products
-      : products.filter((product) => product.category === category);
-
+function ProductGrid() {
   return (
     <div className="product-grid">
-      {filteredProducts.map((product) => (
-        <ProductCard
-          key={product.id}
-          product={product}
-          addToCart={() => alert(`Added ${product.name} to cart`)}
-        />
+      {products.map((product) => (
+        <ProductCard key={product.id} product={product} />
       ))}
     </div>
   );
