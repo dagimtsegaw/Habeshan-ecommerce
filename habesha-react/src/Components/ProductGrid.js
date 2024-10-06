@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import ProductCard from "../Components/ProductCard"; // Adjust the path if necessary
 
 const placeholderProducts = [
   {
@@ -17,30 +18,14 @@ const placeholderProducts = [
     image: "https://via.placeholder.com/200x200.png?text=Loading...",
     description: "...",
   },
-  {
-    id: 3,
-    name: "Loading...",
-    price: "...",
-    category: "all",
-    image: "https://via.placeholder.com/200x200.png?text=Loading...",
-    description: "...",
-  },
-  {
-    id: 4,
-    name: "Loading...",
-    price: "...",
-    category: "all",
-    image: "https://via.placeholder.com/200x200.png?text=Loading...",
-    description: "...",
-  },
 ];
 
 function ProductGrid({ category }) {
-  const [products, setProducts] = useState(placeholderProducts); // Initial placeholder state
-  const [loading, setLoading] = useState(true); // Loading state
+  const [products, setProducts] = useState(placeholderProducts);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    // Simulate a delay in loading actual products
+    // Simulate a product data fetch with random images
     setTimeout(() => {
       setProducts([
         {
@@ -48,7 +33,7 @@ function ProductGrid({ category }) {
           name: "Stylish T-Shirt",
           price: 29.99,
           category: "men",
-          image: "https://via.placeholder.com/200x200.png?text=T-Shirt",
+          image: "https://source.unsplash.com/random/200x200?shirt",
           description: "A comfortable and stylish t-shirt for everyday wear.",
         },
         {
@@ -56,7 +41,7 @@ function ProductGrid({ category }) {
           name: "Comfortable Jeans",
           price: 59.99,
           category: "women",
-          image: "https://via.placeholder.com/200x200.png?text=Jeans",
+          image: "https://source.unsplash.com/random/200x200?jeans",
           description:
             "High-quality jeans that look great and feel even better.",
         },
@@ -65,7 +50,7 @@ function ProductGrid({ category }) {
           name: "Cozy Sweater",
           price: 49.99,
           category: "men",
-          image: "https://via.placeholder.com/200x200.png?text=Sweater",
+          image: "https://source.unsplash.com/random/200x200?sweater",
           description: "Stay warm and fashionable with this cozy sweater.",
         },
         {
@@ -73,33 +58,27 @@ function ProductGrid({ category }) {
           name: "Elegant Dress",
           price: 79.99,
           category: "women",
-          image: "https://via.placeholder.com/200x200.png?text=Dress",
+          image: "https://source.unsplash.com/random/200x200?dress",
           description: "An elegant dress perfect for special occasions.",
         },
       ]);
-      setLoading(false); // Set loading to false after products are loaded
-    }, 2000); // Simulate 2 seconds delay
+      setLoading(false);
+    }, 2000);
   }, [category]);
 
   const filteredProducts =
     category === "all"
       ? products
-      : products.filter((p) => p.category === category);
+      : products.filter((product) => product.category === category);
 
   return (
     <div className="product-grid">
       {filteredProducts.map((product) => (
-        <div key={product.id} className="product-card">
-          <img src={product.image} alt={product.name} />
-          <h3>{product.name}</h3>
-          <p>{loading ? "Loading..." : `$${product.price.toFixed(2)}`}</p>
-          <button
-            disabled={loading}
-            onClick={() => alert(`Added ${product.name} to cart`)}
-          >
-            Add to Cart
-          </button>
-        </div>
+        <ProductCard
+          key={product.id}
+          product={product}
+          addToCart={() => alert(`Added ${product.name} to cart`)}
+        />
       ))}
     </div>
   );
