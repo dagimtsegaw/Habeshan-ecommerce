@@ -92,7 +92,8 @@ body {
 }
 
 .signInButton:hover {
-  color: #6a6a6a;
+  background-color: black;
+  color: white;
 }
 
 .cartContainer {
@@ -119,7 +120,7 @@ body {
   display: none;
   background: none;
   border: none;
-  color: black;
+  color: white;
   cursor: pointer;
 }
 
