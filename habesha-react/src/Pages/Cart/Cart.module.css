@@ -1,0 +1,95 @@
+.cartPage {
+  padding: 20px;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.cartItems {
+  display: flex;
+  flex-direction: column;
+}
+
+.cartItem {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+  padding: 10px;
+  border-bottom: 1px solid #ccc;
+}
+
+.cartImage {
+  width: 80px;
+  height: 80px;
+  object-fit: cover;
+}
+
+.cartDetails {
+  flex-grow: 1;
+  padding: 0 20px;
+}
+
+.quantityControls {
+  display: flex;
+  align-items: center;
+}
+
+.quantityControls button {
+  background-color: #ddd;
+  border: none;
+  padding: 5px;
+  cursor: pointer;
+}
+
+.quantityControls span {
+  margin: 0 10px;
+}
+
+.cartTotal {
+  margin-top: 20px;
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.cartItem {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.cartDetails {
+  flex-grow: 1;
+  padding: 0 20px;
+}
+
+.contactButton {
+  margin-left: auto;
+  padding: 10px 20px;
+  background-color: black; /* Example color */
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+.contactButton:hover {
+  background-color: #5a3d7a;
+}
+.modalBackdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.modalContent {
+  background: white;
+  padding: 20px;
+  border-radius: 10px;
+  text-align: center;
+}

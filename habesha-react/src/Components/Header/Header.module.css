@@ -55,7 +55,7 @@ body {
   right: 0.2px;
   top: 50%;
   transform: translateY(-50%);
-  background-color: black; /* A professional blue accent */
+  background-color: #5a3d7a; /* A professional blue accent */
   border: none;
   padding: 0.4rem;
   border-radius: 50%;
@@ -109,7 +109,7 @@ body {
   position: absolute;
   top: -8px;
   right: -8px;
-  background-color: black; /* Same blue accent for consistency */
+  background-color: #5a3d7a; /* Same blue accent for consistency */
   color: white;
   font-size: 0.75rem;
   font-weight: bold;
@@ -124,6 +124,42 @@ body {
   border: none;
   color: white;
   cursor: pointer;
+}
+
+nav {
+  background-color: #5a3d7a;
+  padding: 0.5rem;
+  color: white;
+}
+
+.menu_icon {
+  display: none;
+  cursor: pointer;
+  font-size: 1.5rem;
+}
+
+.nav_menu {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  justify-content: center;
+}
+
+.nav_menu li {
+  margin: 0 1rem;
+}
+
+.nav_menu li a {
+  text-decoration: none;
+  color: white;
+  font-weight: 600;
+  transition: color 0.3s ease;
+}
+
+.nav_menu li a:hover,
+.nav_menu li a.active {
+  color: var(--primary-color);
 }
 
 @media (max-width: 768px) {

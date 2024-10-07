@@ -1,11 +1,12 @@
 // src/components/NavBar.js
 import React from "react";
+import styles from "./Header.module.css";
 
 const NavBar = () => {
   return (
     <nav>
-      <div className="menu-icon">☰</div>
-      <ul className="nav-menu">
+      <div className={styles.menu_icon}>☰</div>
+      <ul className={styles.nav_menu}>
         <li>
           <a href="#">Home</a>
         </li>

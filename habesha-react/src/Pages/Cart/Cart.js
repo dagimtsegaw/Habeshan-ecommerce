@@ -1,38 +1,81 @@
-import React, { useState } from "react";
-import { FaEnvelope, FaPlus, FaMinus } from "react-icons/fa";
+import React, { useState, useContext } from "react";
+import ContactModal from "./ContactModal";
 import styles from "./Cart.module.css";
+import { DataContext } from "../../Components/DataProvider/DataProvider";
+import { Type } from "../../Utility/action.type";
 
-const Cart = ({ cart, updateCart }) => {
-  const [showContactInfo, setShowContactInfo] = useState(false);
+const Cart = ({ cart = [], setCart }) => {
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [{ basket }, dispatch] = useContext(DataContext);
 
-  const total = cart.reduce((sum, item) => sum + item.price * item.quantity, 0);
+  // Calculate total price of items in the basket
+  const total = basket.reduce((amount, item) => {
+    return item.price * item.amount + amount;
+  }, 0);
 
-  const increaseQuantity = (productId) => {
-    updateCart(productId, "increase");
+  // Increment function
+  const increment = (item) => {
+    dispatch({
+      type: Type.ADD_TO_BASKET,
+      item: {
+        ...item,
+        amount: item.amount + 1, // Incrementing the quantity
+      },
+    });
+    console.log("Updated item:", { ...item, amount: item.amount + 1 });
   };
+  // Decrement function
+  const decrement = (id) =>
+    dispatch({
+      type: Type.REMOVE_FROM_BASKET,
+      id,
+    });
 
-  const decreaseQuantity = (productId) => {
-    updateCart(productId, "decrease");
+  // Handle quantity change (increment/decrement)
+  const handleQuantityChange = (product, action) => {
+    setCart((prevCart) => {
+      return prevCart.map((item) =>
+        item.id === product.id
+          ? {
+              ...item,
+              amount:
+                action === "increment"
+                  ? item.amount + 1
+                  : Math.max(1, item.amount - 1),
+            }
+          : item
+      );
+    });
   };
 
   return (
-    <div className={styles.cart}>
-      <h2>Shopping Cart</h2>
+    <div className={styles.cartPage}>
+      <h2>Your Cart</h2>
       <div className={styles.cartItems}>
-        {cart.length === 0 ? (
-          <p>No items in the cart.</p>
+        {/* If cart is empty, display a message */}
+        {basket.length === 0 ? (
+          <p>Your cart is empty</p>
         ) : (
-          cart.map((item, index) => (
-            <div key={index} className={styles.cartItem}>
-              <p>
-                {item.name} - ${item.price.toFixed(2)} x {item.quantity}
-              </p>
-              <div className={styles.quantityButtons}>
-                <button onClick={() => decreaseQuantity(item.id)}>
-                  <FaMinus />
-                </button>
-                <button onClick={() => increaseQuantity(item.id)}>
-                  <FaPlus />
+          basket.map((item) => (
+            <div className={styles.cartItem} key={item.id}>
+              <img
+                src={item.imgLink}
+                alt={item.name}
+                className={styles.cartImage}
+              />
+              <div className={styles.cartDetails}>
+                <h3>{item.name}</h3>
+                <p>${item.price.toFixed(2)}</p>
+                <div className={styles.quantityControls}>
+                  <button onClick={() => decrement(item.id)}>-</button>
+                  <span>{item.amount}</span>
+                  <button onClick={() => increment(item)}>+</button>
+                </div>
+                <button
+                  className={styles.contactButton}
+                  onClick={() => setIsModalOpen(true)}
+                >
+                  Contact
                 </button>
               </div>
             </div>
@@ -41,20 +84,11 @@ const Cart = ({ cart, updateCart }) => {
       </div>
       <div className={styles.cartTotal}>Total: ${total.toFixed(2)}</div>
 
-      <button
-        className={styles.contactButton}
-        onClick={() => setShowContactInfo(!showContactInfo)}
-      >
-        <FaEnvelope /> Contact
-      </button>
-
-      {showContactInfo && (
-        <div className={styles.contactInfo}>
-          <p>Phone: +123-456-7890</p>
-          <p>Instagram: @habeshan_fashion</p>
-          <p>Facebook: Habeshan Fashion</p>
-        </div>
-      )}
+      {/* Contact Modal */}
+      <ContactModal
+        isOpen={isModalOpen}
+        onClose={() => setIsModalOpen(false)}
+      />
     </div>
   );
 };
