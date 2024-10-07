@@ -1,5 +1,6 @@
 import React, { useState } from "react";
-import { BiCart, BiMenu, BiUser } from "react-icons/bi";
+import { BiMenu, BiUser } from "react-icons/bi";
+import { HiOutlineShoppingBag } from "react-icons/hi2";
 import { IoIosSearch } from "react-icons/io";
 import styles from "./Header.module.css";
 
@@ -29,7 +30,7 @@ const Header = ({ cartCount }) => {
           <span>Sign In</span>
         </button>
         <div className={styles.cartContainer}>
-          <BiCart size={24} style={{ color: "black" }} />
+          <HiOutlineShoppingBag size={24} style={{ color: "black" }} />
           <span className={styles.cartCount}>{cartCount}</span>
         </div>
       </nav>

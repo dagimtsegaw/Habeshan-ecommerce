@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import ProductGrid from "../Components/ProductGrid";
+import ProductGrid from "../Components/Products/ProductGrid";
 
 const Products = ({ addToCart }) => {
   const [category, setCategory] = useState("all");

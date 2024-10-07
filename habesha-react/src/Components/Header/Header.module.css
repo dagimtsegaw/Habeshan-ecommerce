@@ -102,7 +102,9 @@ body {
   display: flex; /* Flex display to adjust width */
   align-items: center; /* Center cart icon and count */
 }
-
+.cartContainer:hover {
+  background-color: lightgray;
+}
 .cartCount {
   position: absolute;
   top: -8px;
